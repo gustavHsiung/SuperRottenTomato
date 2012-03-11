@@ -7,7 +7,8 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
+  puts params[:order]
+  @movies = Movie.all
   end
 
   def new
@@ -38,4 +39,8 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+  def order_by
+    return() if params[:order].blacnk?
+    {:order=>"#{params[:order]}#('ASC')"}
+  end
 end
