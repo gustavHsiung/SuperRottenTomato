@@ -9,7 +9,10 @@ class MoviesController < ApplicationController
   def index
     puts order_by
    if Movie.column_names.include?(params[:order])
-     @movies = Movie.find(:all, order_by)
+    hilite_class = params[:order].to_s+'_class'
+    puts hilite_class
+    instance_variable_set("@#{hilite_class}", :hilite)
+    @movies = Movie.find(:all, order_by)
    else
       @movies = Movie.all
    end
