@@ -7,12 +7,12 @@ class MoviesController < ApplicationController
   end
 
   def index
-    puts params[:order]
-    if(Movie.column_names.include?(params[:order]))
-      @movies = Movie.find(all, order_by):
-    else
+    puts oeder_by
+#   if(Movie.column_names.include?(params[:order]))
+#     @movies = Movie.find(all, order_by):
+#   else
       @movies = Movie.all
-    end
+#   end
   end
 
   def new
