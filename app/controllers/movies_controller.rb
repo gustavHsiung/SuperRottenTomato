@@ -45,6 +45,6 @@ class MoviesController < ApplicationController
 
   def order_by
     return() if params[:order].blacnk?
-    {:order => "#{params[:order]} ASC"}
+    {:order => "title  ASC"}
   end
 end
