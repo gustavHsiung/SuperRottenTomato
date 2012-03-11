@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
 
   def index
     puts params[:order]
-    @movies = Movie.find: all, order_by
+    Movie.column_names.include?(params[:order]))?@movies = Movie.find(all, order_by):@movies= Movie.all
   end
 
   def new
@@ -41,6 +41,6 @@ class MoviesController < ApplicationController
 
   def order_by
     return() if params[:order].blacnk?
-    {:order=>"#{params[:order]}#('ASC')"}
+    {:order => "#{params[:order]} ASC"}
   end
 end
