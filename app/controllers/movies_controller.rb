@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
      @movies = Movie.find(all, order_by)
    else
       @movies = Movie.all
-#   end
+   end
   end
 
   def new
