@@ -19,7 +19,8 @@ class MoviesController < ApplicationController
    @selected_rating = params[:ratings].blank? ? []:params[:ratings].keys
    puts @selected_rating
    if(@seleced_rating.blank? == false)
-      @movies = @movie.where(:rating => @selected_rating)
+    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    @movies = @movie.where(:rating => @selected_rating)
    end
 
   end
