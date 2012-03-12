@@ -12,6 +12,7 @@ class MoviesController < ApplicationController
    if Movie.column_names.include?(params[:order])
       hilite_class = params[:order].to_s+'_class'
       puts hilite_class
+      puts order_by.to_s
       instance_variable_set("@#{hilite_class}", :hilite)
    end
    #ratings
