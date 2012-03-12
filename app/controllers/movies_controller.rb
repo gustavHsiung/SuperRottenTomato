@@ -17,8 +17,9 @@ class MoviesController < ApplicationController
    end
    #ratings
    @selected_rating = params[:ratings].blank? ? {}:params[:ratings].keys
-   select_condition = params[:ratings].blank? ? {}:{:conditions=>{:rating => @selected_rating}}
-   @movies = Movie.find(:all, select_condition, order_by)
+   select_condition = params[:ratings].blank? ? {}:{:conditions=>{:rating => @selected_rating}
+   @movies = Movie.where(select_condition)
+   @movies = @movie.order(order_by)$
   end
 
   def new
@@ -51,6 +52,6 @@ class MoviesController < ApplicationController
 
   def order_by
     return() if params[:order].blank?
-    {:order => params[:order]+" ASC"}
+    params[:order]+" ASC"
   end
 end
