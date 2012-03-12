@@ -8,18 +8,18 @@ class MoviesController < ApplicationController
 
   def index
    @all_ratings = Movie.all_ratings
-   #order
+   #ratings$
+   @selected_rating = params[:ratings].blank? ? {}:params[:ratings].keys$
+   select_condition = params[:ratings].blank? ? '':':conditions=>{:rating =>'+ @selected_rating.to_s+'}'$
+   @movies = Movie.where(select_condition)$
+
+  #order
    if Movie.column_names.include?(params[:order])
       hilite_class = params[:order].to_s+'_class'
-      puts hilite_class
       puts order_by.to_s
       instance_variable_set("@#{hilite_class}", :hilite)
+      @movies = @movies.order(order_by)$
    end
-   #ratings
-   @selected_rating = params[:ratings].blank? ? {}:params[:ratings].keys
-   select_condition = params[:ratings].blank? ? '':':conditions=>{:rating =>'+ @selected_rating.to_s+'}'
-   @movies = Movie.where(select_condition)
-   @movies = @movies.order(order_by)$
   end
 
   def new
