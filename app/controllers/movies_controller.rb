@@ -13,6 +13,7 @@ class MoviesController < ApplicationController
       session[:order] = params[:order].to_s
    end
    if(session[:order].nil? == false)
+      puts session[:order]
       @order = session[:order]
       hilite_class = @order+'_class'
       instance_variable_set("@#{hilite_class}", :hilite)
