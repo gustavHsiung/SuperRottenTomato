@@ -9,9 +9,8 @@ class MoviesController < ApplicationController
   def index
    @all_ratings = Movie.all_ratings
    #ratings
-   @selected_rating = params[:ratings].blank? ? {}:params[:ratings].keys
-   select_condition = params[:ratings].blank? ? '': 'rating =>'+ @selected_rating.to_s
-   @movies = Movie.where(select_condition)
+   @selected_rating = params[:ratings].blank? ? []:params[:ratings].keys
+   @movies = Movie.where(:rating => @selected_rating)
 
   #order
    if Movie.column_names.include?(params[:order])
