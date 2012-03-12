@@ -1,7 +1,8 @@
 class Movie < ActiveRecord::Base
   def self.all_ratings
     puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>'
-    puts self.select(:rating).group(:rating).rating
+    all_rating_group = self.seect(:rating).group(:rating).collect{|r| r.rating}
+    puts all_rating_group
     puts '<<<<<<<<<<<<<<<<<<<<<<<<<<<'
     end
 end
