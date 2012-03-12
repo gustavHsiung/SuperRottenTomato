@@ -10,17 +10,17 @@ class MoviesController < ApplicationController
    @all_ratings = Movie.all_ratings
    #order
    if Movie.column_names.include?(params[:order])
-      hilite_class = params[:order].to_s+'_class'
+      @order = params[:order].to_s
+      hilite_class = @order+'_class'
       instance_variable_set("@#{hilite_class}", :hilite)
    end
    @movies = Movie.order(order_by)
 #ratings
    @selected_rating = params[:ratings].blank? ? params[:prev_ratings].blank? ? nil: params[:prev_ratings] : params[:ratings].keys
-  
+
    puts @selected_rating.to_s
    if(@selected_rating.nil? == false )
-    puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    @movies = @movies.where(:rating => @selected_rating)
+      @movies = @movies.where(:rating => @selected_rating)
    end
 
   end
