@@ -7,8 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def index
-   Movie.all_ratings
-   @all_ratings = ['G','PG','PG-','13','R']
+   @all_ratings = Movie.all_ratings
    if Movie.column_names.include?(params[:order])
     hilite_class = params[:order].to_s+'_class'
     puts hilite_class
