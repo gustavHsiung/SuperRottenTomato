@@ -15,8 +15,9 @@ class MoviesController < ApplicationController
       instance_variable_set("@#{hilite_class}", :hilite)
    end
    #ratings
-   puts params[:ratings].keys unless params[:ratings].blank?
+   puts '>>>>>>>>>>>>>>>>>>>>>>>>>>>>'+params[:ratings].keys unless params[:ratings].blank?
    select_rating = params[:ratings].blank? ? nil:{:conditions=>{:rating => params[:ratings].keys}}
+   puts select_rating+'<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'
    @movies = Movie.find(:all, select_rating , order_by)
   end
 
