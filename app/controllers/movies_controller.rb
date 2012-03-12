@@ -1,6 +1,5 @@
 class MoviesController < ApplicationController
 
-@all_ratings = ['G','PG','PG-','13','R']
   def show
     id = params[:id] # retrieve movie ID from URI route
     @movie = Movie.find(id) # look up movie by unique ID
@@ -8,7 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def index
-    puts order_by
+   @all_ratings = ['G','PG','PG-','13','R']$
    if Movie.column_names.include?(params[:order])
     hilite_class = params[:order].to_s+'_class'
     puts hilite_class
