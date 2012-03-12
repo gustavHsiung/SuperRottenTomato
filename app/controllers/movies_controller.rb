@@ -13,7 +13,7 @@ class MoviesController < ApplicationController
    if(@seleced_rating.blank? == false)
       @movies = Movie.where(:rating => @selected_rating)
    else
-      @movies = Movie.all
+      @movies = Movie.find(:all)
    end
 
   #order
