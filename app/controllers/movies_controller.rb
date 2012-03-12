@@ -8,14 +8,15 @@ class MoviesController < ApplicationController
 
   def index
    @all_ratings = Movie.all_ratings
+   #order
    if Movie.column_names.include?(params[:order])
-    hilite_class = params[:order].to_s+'_class'
-    puts hilite_class
-    instance_variable_set("@#{hilite_class}", :hilite)
-    @movies = Movie.find(:all, order_by)
-   else
-      @movies = Movie.all
+      hilite_class = params[:order].to_s+'_class'
+      puts hilite_class
+      instance_variable_set("@#{hilite_class}", :hilite)
    end
+   #ratings
+   puts params[:ratings].keys unless params[:ratings].blank?
+   @movies = Movie.find(:all, :conditions => [ "rating IN (?)", params[:ratings].keys], order_by)
   end
 
   def new
