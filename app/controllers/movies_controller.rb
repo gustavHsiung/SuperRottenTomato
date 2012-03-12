@@ -10,7 +10,8 @@ class MoviesController < ApplicationController
    @all_ratings = Movie.all_ratings
    #ratings
    @selected_rating = params[:ratings].blank? ? []:params[:ratings].keys
-   @movies = Movie.where(:rating => @selected_rating)
+   if(@seleced_rating.blank? == false)
+      @movies = Movie.where(:rating => @selected_rating)
 
   #order
    if Movie.column_names.include?(params[:order])
