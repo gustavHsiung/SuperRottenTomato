@@ -17,6 +17,7 @@ class MoviesController < ApplicationController
    @movies = Movie.order(order_by)
 #ratings
    @selected_rating = params[:ratings].blank? ? []:params[:ratings].keys
+   puts @selected_rating
    if(@seleced_rating.blank? == false)
       @movies = @movie.where(:rating => @selected_rating)
    end
