@@ -5,14 +5,14 @@
   - @all_ratings.each do |rating|
     = rating
     = check_box_tag "ratings[#{rating}]",1,@selected_rating.nil? ? false : @selected_rating.include?(rating)
-  = submit_tag "Refresh"
+  = submit_tag "Refresh",:id => "news"
 = link_to "Articles",{:controller => 'movies'},{  :id => "news", :class => "article"}
 %table#movies
   %thead
     %tr
-      %th{:id =>'title_header', :class => "#{@title_class}"}= link_to 'Movie Title', movies_path(:order=>:title, :prev_ratings=>@selected_rating),{  :id => "news", :class => "article"}
+      %th{:class => "#{@title_class}"}= link_to 'Movie Title', movies_path(:order=>:title, :prev_ratings=>@selected_rating),{:id =>'title_header'}
       %th Rating
-      %th{:id =>'release_date_header', :class => "#{@release_date_class}"}= link_to 'Release Date', movies_path(:order=>:release_date,:prev_ratings=>@selected_rating)
+      %th{:class => "#{@release_date_class}"}= link_to 'Release Date', movies_path(:order=>:release_date,:prev_ratings=>@selected_rating),{:id =>'release_date_header'}
       %th More Info
   %tbody
     - @movies.each do |movie|
