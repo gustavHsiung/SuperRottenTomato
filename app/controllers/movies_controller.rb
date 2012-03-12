@@ -10,7 +10,10 @@ class MoviesController < ApplicationController
    @all_ratings = Movie.all_ratings
    #order
    if Movie.column_names.include?(params[:order])
-      @order = params[:order].to_s
+      session[:order] = params[:order].to_s
+   end
+   if(session[:order].nil? == false)
+      @order = session[:order]
       hilite_class = @order+'_class'
       instance_variable_set("@#{hilite_class}", :hilite)
    end
