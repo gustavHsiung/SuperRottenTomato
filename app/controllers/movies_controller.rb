@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
       hilite_class = @order+'_class'
       instance_variable_set("@#{hilite_class}", :hilite)
    end
-   @movies = Movie.order(order_by)
+   @movies = Movie.order(@order.nil? ? '':@order+' asc')
 #ratings
    @selected_rating = params[:ratings].blank? ? params[:prev_ratings].blank? ? nil: params[:prev_ratings] : params[:ratings].keys
 
@@ -58,7 +58,7 @@ class MoviesController < ApplicationController
   end
 
   def order_by
-    return() if params[:order].blank?
+    return() if @order.blank?
     params[:order]+" ASC"
   end
 end
