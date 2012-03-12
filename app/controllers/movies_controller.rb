@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
       puts order_by.to_s
       instance_variable_set("@#{hilite_class}", :hilite)
    end
-   @movies = Movie.order(order_by)$
+   @movies = Movie.order(order_by)
 #ratings
    @selected_rating = params[:ratings].blank? ? []:params[:ratings].keys
    if(@seleced_rating.blank? == false)
