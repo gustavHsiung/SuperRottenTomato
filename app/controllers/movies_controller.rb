@@ -19,7 +19,7 @@ class MoviesController < ApplicationController
    puts @selected_rating.to_s
    if(@selected_rating.nil? == false )
     puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    @movies = @movie.where(:rating => @selected_rating)
+    @movies = @movies.where(:rating => @selected_rating)
    end
 
   end
