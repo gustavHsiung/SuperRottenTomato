@@ -5,8 +5,9 @@
   - @all_ratings.each do |rating|
     = rating
     = check_box_tag "ratings[#{rating}]",1,@selected_rating.nil? ? false : @selected_rating.include?(rating)
-  = submit_tag "Refresh",:id => "news"
-= link_to "Articles",{:controller => 'movies'},{  :id => "news", :class => "article"}
+  = hidden_field(:order, @selected_order)
+  = submit_tag "Refresh",:id => "ratings_submi"
+
 %table#movies
   %thead
     %tr
