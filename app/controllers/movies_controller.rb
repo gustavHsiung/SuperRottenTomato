@@ -11,13 +11,12 @@ class MoviesController < ApplicationController
    #order
    if Movie.column_names.include?(params[:order])
       hilite_class = params[:order].to_s+'_class'
-      puts order_by.to_s
       instance_variable_set("@#{hilite_class}", :hilite)
    end
    @movies = Movie.order(order_by)
 #ratings
    @selected_rating = params[:ratings].blank? ? []:params[:ratings].keys
-   puts @selected_rating
+   puts @selected_rating.to_s
    if(@seleced_rating.length > 0)
     puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     @movies = @movie.where(:rating => @selected_rating)
