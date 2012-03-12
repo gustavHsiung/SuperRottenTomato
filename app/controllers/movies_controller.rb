@@ -8,8 +8,8 @@ class MoviesController < ApplicationController
 
   def index
    @all_ratings = Movie.all_ratings
-   #ratings$
-   @selected_rating = params[:ratings].blank? ? {}:params[:ratings].keys$
+   #ratings
+   @selected_rating = params[:ratings].blank? ? {}:params[:ratings].keys
    select_condition = params[:ratings].blank? ? '':':conditions=>{:rating =>'+ @selected_rating.to_s+'}'$
    @movies = Movie.where(select_condition)$
 
