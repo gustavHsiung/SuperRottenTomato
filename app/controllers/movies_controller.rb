@@ -15,9 +15,9 @@ class MoviesController < ApplicationController
    end
    @movies = Movie.order(order_by)
 #ratings
-   @selected_rating = params[:ratings].blank? ? []:params[:ratings].keys
+   @selected_rating = params[:ratings].blank? ? nil : params[:ratings].keys
    puts @selected_rating.to_s
-   if(@seleced_rating.length > 0)
+   if(@seleced_rating.nil? == false )
     puts ">>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     @movies = @movie.where(:rating => @selected_rating)
    end
