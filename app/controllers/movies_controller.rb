@@ -34,7 +34,7 @@ class MoviesController < ApplicationController
    if(@selected_rating.nil? == false )
       @movies = @movies.where(:rating => @selected_rating)
    end
-redirect_to :controller => 'movies', :order => session[:order], :ratings => session[:ratings]$
+   redirect_to :controller => 'movies', :order => session[:order], :ratings => session[:ratings]
   end
 
   def new
