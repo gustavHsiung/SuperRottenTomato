@@ -24,6 +24,8 @@ class MoviesController < ApplicationController
 #ratings
    if(params[:ratings].blank? == false)
      session[:ratings] = params[:ratings].keys
+   elsif(session[:ratings].nil? == false)
+     redirect_to :controller => 'movies', :order => session[:order], :ratings => session[:ratings]
    end
    if(session[:ratings].nil? == false)
      @selected_rating = session[:ratings]
