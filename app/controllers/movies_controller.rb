@@ -11,6 +11,8 @@ class MoviesController < ApplicationController
    #order
    if Movie.column_names.include?(params[:order])
       session[:order] = params[:order].to_s
+   elsif(session[:order].nil? == false)
+      redirect_to :controller => 'movies', :order => session[:order]
    end
    if(session[:order].nil? == false)
       puts session[:order]
