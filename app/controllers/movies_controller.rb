@@ -11,8 +11,8 @@ class MoviesController < ApplicationController
    #order
    if Movie.column_names.include?(params[:order])
       session[:order] = params[:order].to_s
-   elsif(session[:order].nil? == false)
-      redirect_to :controller => 'movies', :order => session[:order]
+#elsif(session[:order].nil? == false)
+#      redirect_to :controller => 'movies', :order => session[:order]
    end
    if(session[:order].nil? == false)
       puts session[:order]
@@ -24,8 +24,6 @@ class MoviesController < ApplicationController
 #ratings
    if(params[:ratings].blank? == false)
      session[:ratings] = params[:ratings].keys
-   elsif(session[:ratings].nil? == false)
-     redirect_to :controller => 'movies', :order => session[:order], :ratings => session[:ratings]
    end
    if(session[:ratings].nil? == false)
      @selected_rating = session[:ratings]
@@ -36,7 +34,7 @@ class MoviesController < ApplicationController
    if(@selected_rating.nil? == false )
       @movies = @movies.where(:rating => @selected_rating)
    end
-
+redirect_to :controller => 'movies', :order => session[:order], :ratings => session[:ratings]$
   end
 
   def new
