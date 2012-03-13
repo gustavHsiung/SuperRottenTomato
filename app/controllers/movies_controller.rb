@@ -20,7 +20,13 @@ class MoviesController < ApplicationController
    end
    @movies = Movie.order(@order.nil? ? '':@order+' asc')
 #ratings
-   @selected_rating = params[:ratings].blank? ? params[:prev_ratings].blank? ? nil: params[:prev_ratings] : params[:ratings].keys
+   if(params[:ratings].blank? == false)
+     session[:ratings] = params[:ratings].keys$
+   end
+   if(session[:ratings].nil? == false)
+     @selected_rating = session[:ratings]
+   end
+#@selected_rating = params[:ratings].blank? ? params[:prev_ratings].blank? ? nil: params[:prev_ratings] : params[:ratings].keys
 
    puts @selected_rating.to_s
    if(@selected_rating.nil? == false )
